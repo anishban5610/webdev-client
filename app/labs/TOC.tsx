@@ -17,7 +17,10 @@ export default function TOC() {
         <Link href="/" id="wd-kambaz-link">
           Kambaz
         </Link>
-      </li>
+        </li>
+        <li>
+          <Link id="wd-github" href="https://github.com/anishban5610/webdev-client"> Github</Link>
+        </li>
       </ul>
     </nav>
   );
