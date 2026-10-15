@@ -1,20 +1,21 @@
 import Link from "next/link";
 
 export default function Profile() {
+  const inputStyle = "w-full border border-gray-300 rounded-lg p-3 mb-3 text-1g";
   return (
-    <div id="wd-profile-screen">
+    <div id="wd-profile-screen" className="p-2">
       <h3>Profile</h3>
       <input
         defaultValue="alice"
         placeholder="username"
-        className="wd-username"
+        className={`wd-username ${inputStyle}`}
       />
-      <br />
+
       <input
         defaultValue="123"
         placeholder="password"
         type="password"
-        className="wd-password"
+        className={`wd-password ${inputStyle}`}
       />
       <br />
       <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" />
@@ -23,13 +24,14 @@ export default function Profile() {
         defaultValue="Wonderland"
         placeholder="Last Name"
         id="wd-lastname"
+        className={inputStyle}
       />
       <br />
-      <input defaultValue="2000-01-01" type="date" id="wd-dob" />
+      <input defaultValue="2000-01-01" type="date" id="wd-dob" className={inputStyle} />
       <br />
-      <input defaultValue="alice@wonderland" type="email" id="wd-email" />
+      <input defaultValue="alice@wonderland" type="email" id="wd-email" className={inputStyle} />
       <br />
-      <select defaultValue="FACULTY" id="wd-role">
+      <select defaultValue="FACULTY" id="wd-role" className={inputStyle}>
         <option value="USER">User</option>
         <option value="ADMIN">Admin</option>
         <option value="FACULTY">Faculty</option>

@@ -1,26 +1,22 @@
 import Link from "next/link";
 
-export default async function AssignmentEditor({
-    params,
-}: {
-    params: Promise<{ cid: string; aid: string }>;
-}) {
-  const { cid, aid } = await params;
+export default function AssignmentEditor() {
+  const inputStyle = "w-full border border-gray-300 rounded p-3";
+  const labelStyle = "block mb-2 font-semibold text-gray-700";
   return (
-    <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" />
-      <br />
-      <br />
+    <div id="wd-assignments-editor" className="p-4 text-gray-700">
+      <label htmlFor="wd-name" className={labelStyle}>
+        Assignment Name
+      </label>
+      <input id="wd-name" defaultValue="A1 - ENV + HTML" className={inputStyle} />
 
-      <label htmlFor="wd-description">Description</label>
-      <br />
-      <textarea id="wd-description">
-        The assignment is available online Submit a link to the landing page of your Web application running on Vercel.
+      <div className="border border-gray-300 rounded p-4 mt-6 mb-6">
+        <textarea id="wd-description" className="w-full min-h-64 resize-y outline-none">
+        The assignment is available online Submit a link to the landing page of
+        your Web application running on Vercel.
       </textarea>
-      <br />
-      <br />
-
+        
+      </div>
       <table>
         <tbody>
           <tr>
@@ -113,19 +109,11 @@ export default async function AssignmentEditor({
                     <input id="wd-available-until" type="date" />
                 </td>
         </tr>
-        <tr>
-            <td></td>
-            <td>
-                <Link id="wd-cancel" href={`/courses/${cid}/assignments`}>Cancel</Link> 
-
-                {" "}
-
-                <Link id="wd-save" href={`/courses/${cid}/assignments`}>Save</Link>
-            </td>
-        </tr>
         </tbody>
       </table>
+      <br />
+      <Link href="/courses/1234/assignments" id="wd-cancel">Cancel</Link>{" "}
+      <Link href="/courses/1234/assignments" id="wd-save">Save</Link>
     </div>
   );
 }
-
