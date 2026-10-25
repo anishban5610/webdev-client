@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 export default function Profile() {
-  const inputStyle = "w-full border border-gray-300 rounded-lg p-3 mb-3 text-1g";
+  const inputStyle = "w-full border border-gray-300 rounded-lg p-3 mb-3 text-lg";
   return (
-    <div id="wd-profile-screen" className="p-2">
-      <h3>Profile</h3>
+    <div id="wd-profile-screen" className="max-w-sm p-2">
+      <h3 className="mb-3 text-2xl font-semibold">Profile</h3>
       <input
         defaultValue="alice"
         placeholder="username"
@@ -18,7 +18,7 @@ export default function Profile() {
         className={`wd-password ${inputStyle}`}
       />
       <br />
-      <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" />
+      <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" className={inputStyle} />
       <br />
       <input
         defaultValue="Wonderland"
@@ -38,7 +38,7 @@ export default function Profile() {
         <option value="STUDENT">Student</option>
       </select>
       <br />
-      <Link href="/account/signin">Sign out</Link>
+      <Link href="/account/signin" className="mb-2 block w-full rounded bg-blue-600 px-3 py-2 text-center text-white no-underline">Sign out</Link>
     </div>
   );
 }

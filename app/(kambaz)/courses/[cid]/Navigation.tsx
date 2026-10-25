@@ -12,7 +12,7 @@ export default function CourseNavigation({ cid }: { cid: string }) {
   const zoom = `/courses/${cid}/zoom`;
   const quizzes = `/courses/${cid}/quizzes`;
   const grades = `/courses/${cid}/grades`;
-  const people = `/courses/${cid}/people`;
+  const people = `/courses/${cid}/people/table`;
 
   return (
     <div id="wd-courses-navigation" className="wd list-group rounded-none text-lg">
@@ -101,11 +101,11 @@ export default function CourseNavigation({ cid }: { cid: string }) {
       </Link>
 
       <Link
-        href={`/courses/${cid}/people`}
+        href={`/courses/${cid}/people/table`}
         id="wd-course-people-link"
         className={
-          pathname === `/courses/${cid}/people` ||
-          pathname.startsWith(`/courses/${cid}/people/`)
+          pathname === `/courses/${cid}/people/table` ||
+          pathname.startsWith(`/courses/${cid}/people/table/`)
             ? "list-group-item active border-0"
             : "list-group-item border-0 text-red-600"
         }
