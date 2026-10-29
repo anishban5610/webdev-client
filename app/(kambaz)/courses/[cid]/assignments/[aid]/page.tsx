@@ -1,11 +1,16 @@
 import Link from "next/link";
+import * as db from "../../../../database";
 
 export default async function AssignmentEditor({
   params,
 }: {
   params: Promise<{ cid: string; aid: string }>;
 }) {
-  const { cid } = await params;
+  const { cid, aid } = await params;
+  const assignment = db.assignments.find(
+  (a) => a._id === aid && a.course === cid,
+  );
+
   const assignmentsHref = `/courses/${cid}/assignments`;
   const inputStyle = "w-full border border-gray-300 rounded p-3";
   const labelStyle = "block mb-2 font-semibold text-gray-700";
@@ -15,7 +20,8 @@ export default async function AssignmentEditor({
     <div id="wd-assignments-editor" className="max-w-3xl space-y-6 p-4 text-gray-700">
       <div>
         <label htmlFor="wd-name" className={labelStyle}>Assignment Name</label>
-        <input id="wd-name" defaultValue="A1 - ENV + HTML" className={inputStyle} />
+        <input id="wd-name" defaultValue={assignment?.title ?? ""} className={inputStyle} />
+        <p>Assignment id: {aid}</p>
       </div>
 
       <div>
@@ -24,14 +30,14 @@ export default async function AssignmentEditor({
           <textarea
             id="wd-description"
             className="w-full min-h-64 resize-y outline-none"
-            defaultValue="The assignment is available online Submit a link to the landing page of your Web application running on Vercel."
+            defaultValue={assignment?.description ?? ""}
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-4 sm:gap-y-6">
         <label htmlFor="wd-points" className={rowLabelStyle}>Points</label>
-        <input id="wd-points" type="number" defaultValue={100} className={inputStyle} />
+        <input id="wd-points" type="number" defaultValue={assignment?.points ?? 100} className={inputStyle} />
 
         <label htmlFor="wd-group" className={rowLabelStyle}>Assignment Group</label>
         <select id="wd-group" defaultValue="ASSIGNMENTS" className={inputStyle}>
@@ -79,12 +85,12 @@ export default async function AssignmentEditor({
           </div>
           <div>
             <label htmlFor="wd-due-date" className={labelStyle}>Due</label>
-            <input id="wd-due-date" type="date" defaultValue="2024-05-13" className={inputStyle} />
+            <input id="wd-due-date" type="date" defaultValue={assignment?.due ?? ""} className={inputStyle} />
           </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="min-w-0">
               <label htmlFor="wd-available-from" className={labelStyle}>Available from</label>
-              <input id="wd-available-from" type="date" defaultValue="2024-05-06" className={`${inputStyle} min-w-0`} />
+              <input id="wd-available-from" type="date" defaultValue={assignment?.available ?? ""} className={`${inputStyle} min-w-0`} />
             </div>
             <div className="min-w-0">
               <label htmlFor="wd-available-until" className={labelStyle}>Until</label>
