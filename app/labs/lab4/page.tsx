@@ -11,6 +11,10 @@ import DateStateVariable from "./DataSetVariable";
 import ObjectStateVariable from "./ObjectStateVariable";
 import ArrayStateVariable from "./ArrayStateVariable";
 import ProfileForm from "./profile/ProfileForm";
+import ParentStateComponent from "./ParentStateComponent";
+import PropDrilling from "./PropDrilling";
+import UrlEncoding from "./UrlEncoding";
+import ContextExamples from "./context/ContextExamples";
 
 export default function Lab4() {
   return (
@@ -32,7 +36,10 @@ export default function Lab4() {
       <ObjectStateVariable />
       <ArrayStateVariable />
       <ProfileForm />
-
+      <ParentStateComponent />
+      <PropDrilling />
+      <UrlEncoding />
+      <ContextExamples />
     </div>
   );
 }
