@@ -1,4 +1,5 @@
 import { FaPlus, FaSearch } from "react-icons/fa";
+import Link from "next/link";
 import AssignmentItem from "./AssignmentItem";
 import * as db from "../../../database";
 
@@ -30,13 +31,13 @@ export default async function Assignments({
           >
             <FaPlus /> Group
           </button>
-          <button
+          <Link
             id="wd-add-assignment"
-            type="button"
+            href={`/courses/${cid}/assignments/new`}
             className="inline-flex items-center gap-1 rounded bg-red-600 px-3 py-1.5 text-sm font-medium text-white"
           >
             <FaPlus /> Assignment
-          </button>
+          </Link>
         </div>
       </div>
       <h3

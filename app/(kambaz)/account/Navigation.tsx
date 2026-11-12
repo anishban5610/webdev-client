@@ -2,26 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAccountContext } from "./AccountContext";
 
 export default function AccountNavigation() {
-  const pathname = usePathname();
-
+  const { currentUser } = useAccountContext();
+  const links = currentUser
+    ? (["profile"] as const)
+    : (["signin", "signup"] as const);
+  const pathname = usePathname() ?? "";
   return (
-    <nav id="wd-account-navigation" aria-label="Account navigation" className="wd list-group rounded-none text-lg">
-      {[
-        ["/account/signin", "Signin"],
-        ["/account/signup", "Signup"],
-        ["/account/profile", "Profile"],
-      ].map(([href, label]) => (
-        <Link
-          key={href}
-          href={href}
-          aria-current={pathname === href ? "page" : undefined}
-          className={pathname === href ? "list-group-item active border-0" : "list-group-item border-0 text-red-600"}
-        >
-          {label}
-        </Link>
+    <div id="wd-account-navigation">
+      {links.map((link) => (
+        <span key={link}>
+          <Link href={`/account/${link}`}>
+            {link === "signin"
+              ? "Signin"
+              : link === "signup"
+                ? "Signup"
+                : "Profile"}
+          </Link>
+          <br />
+        </span>
       ))}
-    </nav>
+    </div>
   );
 }
